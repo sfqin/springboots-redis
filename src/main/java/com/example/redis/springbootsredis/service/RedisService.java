@@ -32,4 +32,13 @@ public interface RedisService {
      */
     boolean getLockAndExpireV3(String lockKey, String lockValue,long expireSecond);
 
+    /**
+     * 原生 jedis 实现分布式锁
+     * @param lockKey
+     * @param lockValue
+     * @param expireSecond
+     * @return
+     */
+    boolean getLockAndExpireV4(String lockKey, String lockValue,long expireSecond);
+
 }

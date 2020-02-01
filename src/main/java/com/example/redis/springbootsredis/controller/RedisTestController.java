@@ -23,13 +23,37 @@ public class RedisTestController {
         return byStrKey;
     }
 
-
     @GetMapping("lock1")
     public Object testLock1(String key){
         log.info("key => {}",key);
-        boolean lockAndExpireV3 = redisService.getLockAndExpireV3("key", "value", 30000);
+        boolean lockAndExpireV3 = redisService.getLockAndExpire(key, "value", 30);
         log.info("value => {}",lockAndExpireV3);
         return lockAndExpireV3;
+    }
+
+    @GetMapping("lock2")
+    public Object testLock2(String key){
+        log.info("key => {}",key);
+        boolean lockAndExpireV3 = redisService.getLockAndExpireV2(key, "value", 30000);
+        log.info("value => {}",lockAndExpireV3);
+        return lockAndExpireV3;
+    }
+
+
+    @GetMapping("lock3")
+    public Object testLock3(String key){
+        log.info("key => {}",key);
+        boolean lockAndExpireV3 = redisService.getLockAndExpireV3(key, "value", 30);
+        log.info("value => {}",lockAndExpireV3);
+        return lockAndExpireV3;
+    }
+
+    @GetMapping("lock4")
+    public Object testLock4(String key){
+        log.info("key => {}",key);
+        boolean lockAndExpireV4 = redisService.getLockAndExpireV4(key, "value", 30);
+        log.info("value => {}",lockAndExpireV4);
+        return lockAndExpireV4;
     }
 
 }
